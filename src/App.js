@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from "react";
+import { Route, Routes } from "react-router-dom";
+import Customers from "./components/customers";
+import MovieForm from "./components/movieForm";
+import NavBar from "./components/navBar";
+import Rental from "./components/rental";
+import Vidly from "./components/vidly";
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <NavBar />
+        <div className="content">
+          <Routes>
+            <Route path="/rental" element={<Rental />} />
+            <Route path="/movies" element={<Vidly />} />
+            <Route path="/movieForm" element={<MovieForm />}>
+              <Route path=":id" element={<MovieForm />} />
+            </Route>
+            <Route path="/customers" element={<Customers />} />
+            <Route path="/*" element={<Vidly />} />
+          </Routes>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

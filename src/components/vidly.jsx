@@ -7,13 +7,16 @@ import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
+import { Route, Routes } from "react-router-dom";
+import Customers from "./customers";
+import Rental from "./rental";
 
 class Vidly extends Component {
   state = {
     movies: [],
     genres: [],
     currentPage: 1,
-    pageSize:3,
+    pageSize: 3,
     sortColumn: { path: "title", order: "asc" },
   };
   componentDidMount() {
@@ -69,7 +72,12 @@ class Vidly extends Component {
 
     return (
       <React.Fragment>
+
         <div className="row m-5 p-2">
+          <Routes>
+            <Route path="/customers" element={<Customers />}></Route>
+            <Route path="/rental" element={<Rental />}></Route>
+          </Routes>
           <div className="col-2">
             <ListGroup
               items={genres}
