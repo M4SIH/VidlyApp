@@ -5,6 +5,7 @@ import MovieForm from "./components/movieForm";
 import NavBar from "./components/navBar";
 import Rental from "./components/rental";
 import Vidly from "./components/vidly";
+import LoginFrom from "./components/loginForm";
 class App extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class App extends Component {
         <div className="content">
           <Routes>
             <Route path="/rental" element={<Rental />} />
+            <Route path="/login" element={<LoginFrom />} />
             <Route path="/movies" element={<Vidly />} />
             <Route path="/movieForm" element={<MovieForm />}>
               <Route path=":id" element={<MovieForm />} />
