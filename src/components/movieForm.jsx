@@ -5,6 +5,7 @@ const MovieForm = ({match}) => {
   return (
     <div>
       <h1> The Movie is {id}</h1>
+      
     </div>
   );
 };
