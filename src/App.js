@@ -1,29 +1,30 @@
 import React, { Component } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Customers from "./components/customers";
+import LoginFrom from "./components/loginForm";
 import MovieForm from "./components/movieForm";
 import NavBar from "./components/navBar";
+import NotFound from "./components/notFound";
+import RegisterForm from "./components/registerForm";
 import Rental from "./components/rental";
 import Vidly from "./components/vidly";
-import LoginFrom from "./components/loginForm";
-import RegisterForm from "./components/registerForm";
 class App extends Component {
   render() {
     return (
       <div className="App">
         <NavBar />
         <div className="content">
-          <Routes>
-            <Route path="/rental" element={<Rental />} />
-            <Route path="/login" element={<LoginFrom />} />
-            <Route path="/register" element={<RegisterForm />} />
-            <Route path="/movies" element={<Vidly />} />
-            <Route path="/movieForm" element={<MovieForm />}>
-              <Route path=":id" element={<MovieForm />} />
-            </Route>
-            <Route path="/customers" element={<Customers />} />
-            <Route path="/*" element={<Vidly />} />
-          </Routes>
+          <Switch>
+            <Route path="/register" component={RegisterForm} />
+            <Route path="/login" component={LoginFrom} />
+            <Route path="/movies/:id" component={MovieForm} />
+            <Route path="/movies" component={Vidly} />
+            <Route path="/customers" component={Customers} />
+            <Route path="/rental" component={Rental} />
+            <Route path="/not-found" component={NotFound} />
+            <Redirect from="/" exact to="/movies" />
+            <Redirect to="/not-found" />
+          </Switch>
         </div>
       </div>
     );

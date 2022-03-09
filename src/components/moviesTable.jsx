@@ -9,7 +9,7 @@ class MoviesTable extends Component {
       path: "title",
       label: "Title",
       content: (movie) => (
-        <Link style={{ textDecoration: "none" }} to={`/movieForm/${movie._id}`}>
+        <Link style={{ textDecoration: "none" }} to={`/movies/${movie._id}`}>
           {movie.title}
         </Link>
       ),

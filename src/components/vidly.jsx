@@ -7,9 +7,10 @@ import ListGroup from "./common/listGroup";
 import { getGenres } from "../services/fakeGenreService";
 import MoviesTable from "./moviesTable";
 import _ from "lodash";
-import { Route, Routes } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
 import Customers from "./customers";
 import Rental from "./rental";
+import { Switch } from "react-router-dom";
 
 class Vidly extends Component {
   state = {
@@ -72,12 +73,11 @@ class Vidly extends Component {
 
     return (
       <React.Fragment>
-
         <div className="row m-5 p-2">
-          <Routes>
+          <Switch>
             <Route path="/customers" element={<Customers />}></Route>
             <Route path="/rental" element={<Rental />}></Route>
-          </Routes>
+          </Switch>
           <div className="col-2">
             <ListGroup
               items={genres}
@@ -86,6 +86,14 @@ class Vidly extends Component {
             />
           </div>
           <div className="col">
+          <button className="btn btn-primary row mb-1 p-1">
+          <Link
+            style={{ textDecoration: "none", color: "white" }}
+            to="/movies/new"
+          >
+            New Movie
+          </Link>
+        </button>
             <div className="showCount">
               {totalCount === 0 ? (
                 <p>There are no movies in database</p>
