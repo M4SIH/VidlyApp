@@ -60,7 +60,6 @@ class MovieForm extends Form {
   };
 
   render() {
-    // const { genre } = this.state.data;
     return (
       <React.Fragment>
         <h1 style={{ textAlign: "center" }}>Movie Form</h1>
